@@ -29,7 +29,7 @@ L'opera in cui Dewey lega l'educazione alla vita democratica. Per il corso sono 
 - [[Dewey 1916 · 18. Educational values]] · I valori educativi
 - [[Dewey 1916 · 19. Labor and leisure]] · Lavoro e tempo libero
 - [[Dewey 1916 · 20. Intellectual and practical studies]] · Studi intellettuali e studi pratici
-- [[Dewey 1916 · 21. Physical and social studies: naturalism and humanism]] · Studi fisici e sociali: naturalismo e umanesimo
+- [[Dewey 1916 · 21. Physical and social studies, naturalism and humanism]] · Studi fisici e sociali: naturalismo e umanesimo
 - [[Dewey 1916 · 22. The individual and the world]] · L'individuo e il mondo
 - [[Dewey 1916 · 23. Vocational aspects of education]] · Aspetti professionali dell'educazione
 - [[Dewey 1916 · 24. Philosophy of education]] · Filosofia dell'educazione

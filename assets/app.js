@@ -60,9 +60,9 @@
     this.t = d3.zoomIdentity; this.nodes = []; this.links = []; this.hover = null; this.pos = {};
     this.w = 0; this.h = 0;
     var self = this;
-    this.zoom = d3.zoom().scaleExtent([0.15, 6]).on('zoom', function (ev) { self.t = ev.transform; self.draw(); });
+    this.zoom = d3.zoom().clickDistance(6).scaleExtent([0.15, 6]).on('zoom', function (ev) { self.t = ev.transform; self.draw(); });
     var moved = false, sx = 0, sy = 0;
-    var drag = d3.drag()
+    var drag = d3.drag().clickDistance(6)
       .subject(function (ev) {
         var p = self.t.invert([ev.x, ev.y]);
         var n = self.find(p[0], p[1]);
@@ -82,7 +82,6 @@
         canvas.classList.remove('dragging');
         if (!ev.active && self.sim) self.sim.alphaTarget(0);
         if (!ev.subject.pinned) { ev.subject.fx = null; ev.subject.fy = null; }
-        if (!moved && self.opt.onClick) self.opt.onClick(ev.subject.n);
       });
     d3.select(canvas).call(drag).call(this.zoom).on('dblclick.zoom', null);
     canvas.addEventListener('pointermove', function (e) {
@@ -92,6 +91,21 @@
       if (n !== self.hover) { self.hover = n; canvas.style.cursor = n ? 'pointer' : ''; self.draw(); }
       if (self.opt.onHover) self.opt.onHover(n, e.clientX - r.left, e.clientY - r.top);
     });
+    // apertura della nota: clic singolo o doppio clic su un punto
+    var lastOpen = 0;
+    function openAt(e) {
+      if (!self.opt.onClick) return;
+      var r = canvas.getBoundingClientRect();
+      var p = self.t.invert([e.clientX - r.left, e.clientY - r.top]);
+      var n = self.find(p[0], p[1], 8) || self.hover;
+      if (!n) return;
+      var now = Date.now();
+      if (now - lastOpen < 600) return;
+      lastOpen = now;
+      self.opt.onClick(n.n);
+    }
+    canvas.addEventListener('click', openAt);
+    canvas.addEventListener('dblclick', function (e) { e.preventDefault(); openAt(e); });
     canvas.addEventListener('pointerleave', function () {
       self.hover = null; self.draw(); if (self.opt.onHover) self.opt.onHover(null);
     });
@@ -164,10 +178,10 @@
       (self.adj[a] = self.adj[a] || {})[b] = 1; (self.adj[b] = self.adj[b] || {})[a] = 1;
     });
   };
-  GraphView.prototype.find = function (x, y) {
-    var best = null, bd = Infinity, k = this.t.k;
+  GraphView.prototype.find = function (x, y, extra) {
+    var best = null, bd = Infinity, k = this.t.k, ex = extra || 4;
     for (var i = 0; i < this.nodes.length; i++) {
-      var n = this.nodes[i], dx = n.x - x, dy = n.y - y, d = dx * dx + dy * dy, rr = n.r + 4 / k;
+      var n = this.nodes[i], dx = n.x - x, dy = n.y - y, d = dx * dx + dy * dy, rr = n.r + ex / k;
       if (d < rr * rr && d < bd) { bd = d; best = n; }
     }
     return best;
