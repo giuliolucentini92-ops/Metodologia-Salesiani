@@ -59,6 +59,9 @@
   var PORTRAIT = {"src": "assets/ritratto.webp", "w": 1100, "h": 956, "cx": 535.5, "cy": 160.0, "area": 97036, "poly": [[240.5, 159.4], [279.7, 158.5], [310.4, 176.2], [390.6, 203.2], [425.1, 236.8], [490.3, 268.5], [569.6, 283.4], [631.1, 286.2], [668.4, 320.7], [731.8, 313.2], [770.9, 295.5], [775.6, 267.5], [743.9, 196.7], [739.2, 159.4], [683.3, 87.6], [641.4, 47.5], [560.3, 25.2], [509.0, 28.0], [466.1, 22.4], [414.8, 31.7], [330.9, 60.6], [254.5, 115.6], [250.8, 140.8]]};
   PORTRAIT.img = new Image();
   PORTRAIT.img.src = PORTRAIT.src;
+  PORTRAIT.eye = {"x": 217.2, "y": 283.4, "w": 110, "h": 84};
+  PORTRAIT.eyeImg = new Image();
+  PORTRAIT.eyeImg.src = 'assets/occhio.png';
   function inPoly(x, y, P) {
     var c = false;
     for (var i = 0, j = P.length - 1; i < P.length; j = i++) {
@@ -244,9 +247,19 @@
       var r = t.k / (this.fitK || t.k);
       var op = r <= 1.05 ? 0.9 : r >= 2.3 ? 0.06 : 0.9 - (r - 1.05) / 1.25 * 0.84;
       if (focus) op *= 0.45;
-      var S = this.pS;
+      var S = this.pS, A = this.anim, br = A ? A.breath : 0;
+      ctx.save();
+      // respiro: lieve dilatazione ancorata alle spalle
+      var by = (PORTRAIT.h - PORTRAIT.cy) * S;
+      ctx.translate(0, by); ctx.scale(1 + 0.004 * br, 1 + 0.006 * br); ctx.translate(0, -by);
       ctx.globalAlpha = op;
       ctx.drawImage(PORTRAIT.img, -PORTRAIT.cx * S, -PORTRAIT.cy * S, PORTRAIT.w * S, PORTRAIT.h * S);
+      if (A && A.blink > 0 && PORTRAIT.eyeImg.complete && PORTRAIT.eyeImg.naturalWidth) {
+        var E = PORTRAIT.eye;
+        ctx.globalAlpha = op * A.blink;
+        ctx.drawImage(PORTRAIT.eyeImg, (E.x - PORTRAIT.cx) * S, (E.y - PORTRAIT.cy) * S, E.w * S, E.h * S);
+      }
+      ctx.restore();
       ctx.globalAlpha = 1;
     }
     // archi
@@ -277,6 +290,31 @@
       }
     });
     ctx.globalAlpha = 1;
+    if (this.anim && this.anim.on && !focus && !match) {
+      var A2 = this.anim, now = A2.now;
+      // alone dei nodi raggiunti da un impulso
+      Object.keys(A2.flash).forEach(function (id) {
+        var f = 1 - (now - A2.flash[id]) / 700, nd = self.nodeBy[id];
+        if (f <= 0 || !nd) { delete A2.flash[id]; return; }
+        ctx.beginPath(); ctx.arc(nd.x, nd.y, nd.r + (2 + 7 * (1 - f)) / t.k, 0, 2 * Math.PI);
+        ctx.globalAlpha = 0.7 * f; ctx.lineWidth = 2 / t.k;
+        ctx.strokeStyle = noteColor(nd.n, o.colorMode ? o.colorMode() : 'unita'); ctx.stroke();
+      });
+      // impulsi lungo i collegamenti
+      A2.pulses.forEach(function (p) {
+        var q = Math.min(1, (now - p.t0) / p.dur), a = p.a, b = p.b;
+        var x = a.x + (b.x - a.x) * q, y = a.y + (b.y - a.y) * q;
+        var q0 = Math.max(0, q - 0.22), xt = a.x + (b.x - a.x) * q0, yt = a.y + (b.y - a.y) * q0;
+        var col = noteColor(a.n, o.colorMode ? o.colorMode() : 'unita');
+        var fade = q < 0.12 ? q / 0.12 : 1;
+        ctx.globalAlpha = 0.55 * fade; ctx.strokeStyle = col; ctx.lineWidth = 2.2 / t.k; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(xt, yt); ctx.lineTo(x, y); ctx.stroke();
+        ctx.globalAlpha = 0.22 * fade; ctx.fillStyle = col;
+        ctx.beginPath(); ctx.arc(x, y, 7 / t.k, 0, 2 * Math.PI); ctx.fill();
+        ctx.globalAlpha = fade; ctx.beginPath(); ctx.arc(x, y, 3 / t.k, 0, 2 * Math.PI); ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+    }
     // etichette (dimensione costante sullo schermo)
     var fs = 12 / t.k;
     ctx.font = '500 ' + fs + 'px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
@@ -327,6 +365,51 @@
     }
   });
   var globalBuilt = false;
+
+  /* ---------- animazione: respiro, battito di ciglia, sinapsi ---------- */
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  global.anim = { on: false, pulses: [], flash: {}, breath: 0, blink: 0, now: 0, nextBlink: 0, nextSpawn: 0, last: 0 };
+  function animActive() {
+    if (reduceMotion || document.hidden || $('#view-graph').hidden || !global.portrait || !global.links.length) return false;
+    return global.t.k / (global.fitK || global.t.k) < 1.8; // fermo quando si zooma da vicino
+  }
+  function startPulse(a, now) {
+    var nbs = global.adj[a.id]; if (!nbs) return;
+    var ids = Object.keys(nbs); if (!ids.length) return;
+    var b = global.nodeBy[ids[Math.floor(Math.random() * ids.length)]];
+    if (!b) return;
+    var len = Math.hypot(b.x - a.x, b.y - a.y);
+    global.anim.pulses.push({ a: a, b: b, t0: now, dur: Math.max(380, len * 9) });
+  }
+  function animLoop(now) {
+    requestAnimationFrame(animLoop);
+    var A = global.anim, on = animActive();
+    if (!on) { if (A.on) { A.on = false; A.pulses = []; A.flash = {}; A.blink = 0; A.breath = 0; global.draw(); } return; }
+    if (now - A.last < 33) return; // circa 30 fotogrammi al secondo
+    A.last = now; A.on = true; A.now = now;
+    A.breath = Math.sin(now / 6000 * 2 * Math.PI);
+    // battito di ciglia ogni 3,5-7 secondi, talvolta doppio
+    if (!A.nextBlink) A.nextBlink = now + 2500;
+    if (now >= A.nextBlink) {
+      var bt = now - A.nextBlink;
+      A.blink = bt < 80 ? bt / 80 : bt < 130 ? 1 : bt < 230 ? 1 - (bt - 130) / 100 : 0;
+      if (bt >= 230) { A.blink = 0; A.nextBlink = now + (Math.random() < 0.15 ? 250 : 3500 + Math.random() * 3500); }
+    }
+    // impulsi: nuovi ogni 150-350 ms, al massimo 14 insieme
+    if (now >= A.nextSpawn && A.pulses.length < 16) {
+      startPulse(global.nodes[Math.floor(Math.random() * global.nodes.length)], now);
+      A.nextSpawn = now + 150 + Math.random() * 200;
+    }
+    var arrived = [];
+    A.pulses = A.pulses.filter(function (p) {
+      if (now - p.t0 < p.dur) return true;
+      A.flash[p.b.id] = now; arrived.push(p.b);
+      return false;
+    });
+    arrived.forEach(function (n) { if (Math.random() < 0.45 && A.pulses.length < 16) startPulse(n, now); }); // propagazione
+    global.draw();
+  }
+  requestAnimationFrame(animLoop);
   function visibleNotes() {
     return NOTES.filter(function (n) {
       if (!gState.tipi[n.k]) return false;
