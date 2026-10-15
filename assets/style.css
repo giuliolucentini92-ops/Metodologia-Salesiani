@@ -230,3 +230,14 @@ sup.fnref { font-size: 11px; color: var(--accent); font-weight: 600; }
 .deep-box ul { margin: 0; padding-left: 20px; }
 .deep-box li { margin: 3px 0; font-size: 15px; }
 .deep-box .k { color: var(--text-3); font-size: 12.5px; }
+
+/* grafo locale interattivo */
+.card-tools { display: flex; align-items: center; gap: 6px; }
+.icon-btn.small { width: 28px; height: 28px; }
+.local-wrap { position: relative; }
+.local-hint { margin: 8px 0 0; }
+.local-card.expanded { position: fixed; z-index: 60; inset: 6vh 6vw; display: flex; flex-direction: column; box-shadow: var(--shadow); }
+.local-card.expanded .local-wrap { flex: 1; min-height: 0; }
+.local-card.expanded #local-canvas { height: 100%; }
+.local-scrim { z-index: 55; }
+body.local-open .note-side { z-index: 70; }

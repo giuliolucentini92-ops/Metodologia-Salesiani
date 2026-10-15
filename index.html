@@ -86,15 +86,24 @@
     <section id="view-note" class="view" hidden>
       <article class="note" id="note"></article>
       <aside class="note-side">
-        <div class="card">
+        <div class="card local-card" id="local-card">
           <div class="card-head">
             <strong>Grafo locale</strong>
-            <div class="seg small" id="depth">
-              <button data-d="1" class="on">1 passo</button>
-              <button data-d="2">2 passi</button>
+            <div class="card-tools">
+              <div class="seg small" id="depth">
+                <button data-d="1" class="on">1 passo</button>
+                <button data-d="2">2 passi</button>
+              </div>
+              <button class="icon-btn small" id="local-expand" aria-label="Ingrandisci il grafo locale" title="Ingrandisci">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+              </button>
             </div>
           </div>
-          <canvas id="local-canvas" aria-label="Collegamenti della nota"></canvas>
+          <div class="local-wrap">
+            <canvas id="local-canvas" aria-label="Collegamenti della nota"></canvas>
+            <div class="graph-tip" id="local-tip" hidden></div>
+          </div>
+          <p class="card-sub local-hint">Passa sopra un punto per leggerne il titolo, cliccalo per aprire la nota.</p>
         </div>
         <div class="card">
           <strong>Collegamenti in entrata</strong>
@@ -106,6 +115,7 @@
   </main>
 </div>
 <div class="scrim" id="scrim" hidden></div>
+<div class="scrim local-scrim" id="local-scrim" hidden></div>
 
 <script src="assets/vendor/d3.min.js"></script>
 <script src="assets/vendor/marked.min.js"></script>

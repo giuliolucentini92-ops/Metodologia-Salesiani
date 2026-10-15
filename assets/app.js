@@ -61,7 +61,7 @@
     this.w = 0; this.h = 0;
     var self = this;
     this.zoom = d3.zoom().scaleExtent([0.15, 6]).on('zoom', function (ev) { self.t = ev.transform; self.draw(); });
-    var moved = false;
+    var moved = false, sx = 0, sy = 0;
     var drag = d3.drag()
       .subject(function (ev) {
         var p = self.t.invert([ev.x, ev.y]);
@@ -69,12 +69,12 @@
         return n ? n : null;
       })
       .on('start', function (ev) {
-        moved = false; canvas.classList.add('dragging');
+        moved = false; sx = ev.x; sy = ev.y; canvas.classList.add('dragging');
         if (!ev.active && self.sim) self.sim.alphaTarget(0.25).restart();
         ev.subject.fx = ev.subject.x; ev.subject.fy = ev.subject.y;
       })
       .on('drag', function (ev) {
-        moved = true;
+        if (Math.abs(ev.x - sx) + Math.abs(ev.y - sy) > 4) moved = true;
         var p = self.t.invert([ev.x, ev.y]);
         ev.subject.fx = p[0]; ev.subject.fy = p[1];
       })
@@ -336,8 +336,31 @@
     colorMode: function () { return 'unita'; },
     allLabels: function () { return false; },
     showStudied: function () { return false; },
-    onClick: function (n) { location.hash = '#/n/' + n.id; }
+    onClick: function (n) { setLocalExpanded(false); location.hash = '#/n/' + n.id; },
+    onHover: function (n, x, y) {
+      var lt = $('#local-tip');
+      if (!n) { lt.hidden = true; return; }
+      lt.innerHTML = '<span class="k">' + esc(TYPES[n.n.k].one) + (n.n.u[0] ? ' · Unità ' + n.n.u.join(', ') : '') + '</span>' + esc(n.n.t);
+      lt.hidden = false;
+      var w = lt.offsetWidth, W = local.w;
+      lt.style.left = Math.max(4, Math.min(x + 12, W - w - 4)) + 'px';
+      lt.style.top = (y + 14 + lt.offsetHeight > local.h ? y - lt.offsetHeight - 8 : y + 14) + 'px';
+    }
   });
+  function setLocalExpanded(on) {
+    var card = $('#local-card');
+    if (card.classList.contains('expanded') === on) return;
+    card.classList.toggle('expanded', on);
+    $('#local-scrim').hidden = !on;
+    document.body.classList.toggle('local-open', on);
+    local.opt.maxLabel = on ? 60 : 26;
+    local.opt.maxFit = on ? 3 : 1.6;
+    local.opt.labelZoom = on ? 0.6 : 1.5;
+    setTimeout(function () { local.resize(); local.fit(30); }, 30);
+  }
+  $('#local-expand').onclick = function () { setLocalExpanded(!$('#local-card').classList.contains('expanded')); };
+  $('#local-scrim').onclick = function () { setLocalExpanded(false); };
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setLocalExpanded(false); });
   function buildLocal(id) {
     var keep = {}; keep[id] = 1;
     var frontier = [id];
