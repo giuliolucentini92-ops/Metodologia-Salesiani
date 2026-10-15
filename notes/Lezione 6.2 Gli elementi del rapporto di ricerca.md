@@ -20,3 +20,5 @@ D: Un testo descrive come i bambini, a casa, a scuola e ai giardini, occupino gr
 - Il segreto dell'infanzia
 S: Il titolo di un rapporto deve far cogliere subito l'argomento attraverso parole chiave; i titoli evocativi sono adatti a un saggio divulgativo, non a un rapporto.
 ```
+
+Slide della lezione: [[Slide 6.2 Gli elementi del rapporto di ricerca]]

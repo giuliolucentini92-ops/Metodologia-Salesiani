@@ -18,3 +18,5 @@ D: Al caso 7 la variabile titolo di studio vale 12, ma i codici possibili vanno 
 - Dei valori mancanti
 S: 12 non è un valore ammesso per quella variabile.
 ```
+
+Slide della lezione: [[Slide 5.3 Immissione e pulizia dei dati]]

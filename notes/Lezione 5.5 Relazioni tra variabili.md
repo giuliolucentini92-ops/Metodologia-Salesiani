@@ -19,3 +19,5 @@ D: Una relazione si dice unidirezionale quando:
 - al variare di x, y varia in senso inverso
 S: Unidirezionale significa asimmetrica; il verso (positivo o negativo) è un'altra caratteristica.
 ```
+
+Slide della lezione: [[Slide 5.5 Relazioni tra variabili]]

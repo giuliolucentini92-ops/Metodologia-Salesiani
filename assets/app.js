@@ -24,8 +24,13 @@
     lezione: { label: 'Lezioni', one: 'Lezione', color: '#7d86f2' },
     concetto: { label: 'Concetti', one: 'Concetto', color: '#3fb99a' },
     autore: { label: 'Autori', one: 'Autore', color: '#ec9a52' },
-    risorsa: { label: 'Risorse', one: 'Risorsa', color: '#e0679d' }
+    risorsa: { label: 'Risorse', one: 'Risorsa', color: '#e0679d' },
+    libro: { label: 'Libri', one: 'Libro', color: '#b8743a', deep: 1 },
+    capitolo: { label: 'Capitoli', one: 'Capitolo', color: '#c99a5b', deep: 1 },
+    sezione: { label: 'Paragrafi del manuale', one: 'Paragrafo del manuale', color: '#8c96a6', deep: 1 },
+    slide: { label: 'Slide', one: 'Slide', color: '#36a7b8', deep: 1 }
   };
+  var DEEP = { libro: 1, capitolo: 1, sezione: 1, slide: 1 };
 
   /* ---------- memoria locale (facoltativa) ---------- */
   function load(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
@@ -44,6 +49,8 @@
     var r = 3.2 + Math.sqrt(n.deg) * 1.35;
     if (n.k === 'unita') r += 3;
     if (n.k === 'indice') r += 2;
+    if (n.k === 'sezione' || n.k === 'capitolo') r = Math.max(2.6, r * 0.6);
+    if (n.k === 'libro') r += 2;
     return Math.min(r, 17);
   }
 
@@ -234,6 +241,7 @@
 
   /* ---------- grafo globale ---------- */
   var gState = load('mre-graph', { mode: 'unita', tipi: { indice: 1, unita: 1, lezione: 1, concetto: 1, autore: 1, risorsa: 1 }, unita: { 0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1 }, labels: 0, studied: 0 });
+  Object.keys(DEEP).forEach(function (k) { if (gState.tipi[k] === undefined) gState.tipi[k] = 0; });
   var tip = $('#graph-tip');
   var global = new GraphView($('#graph-canvas'), {
     dist: 42, charge: -95, gravity: 0.05, maxFit: 1.1,
@@ -263,6 +271,8 @@
     if (fit) global.fitPending = true;
   }
   function buildPanel() {
+    var deepOn = Object.keys(DEEP).some(function (k) { return gState.tipi[k]; });
+    document.querySelectorAll('#depth-mode button').forEach(function (b) { b.classList.toggle('on', (b.dataset.deep === '1') === deepOn); });
     var ft = $('#filters-tipo'); ft.innerHTML = '';
     Object.keys(TYPES).forEach(function (k) {
       var b = document.createElement('span');
@@ -288,10 +298,24 @@
       lg.innerHTML += '<span><i style="background:' + UNIT_COLORS[0] + '"></i>Indici generali</span>';
     }
     lg.innerHTML += '<span style="margin-top:4px;color:var(--text-3)">Nodi più grandi = più collegati</span>';
-    document.querySelectorAll('#color-mode button').forEach(function (b) { b.classList.toggle('on', b.dataset.mode === gState.mode); });
+    document.querySelectorAll('#depth-mode button').forEach(function (b) {
+    b.onclick = function () {
+      var on = b.dataset.deep === '1' ? 1 : 0;
+      Object.keys(DEEP).forEach(function (k) { gState.tipi[k] = on; });
+      save('mre-graph', gState); buildPanel(); rebuildGlobal(true);
+    };
+  });
+  document.querySelectorAll('#color-mode button').forEach(function (b) { b.classList.toggle('on', b.dataset.mode === gState.mode); });
     $('#opt-labels').checked = !!gState.labels;
     $('#opt-studied').checked = !!gState.studied;
   }
+  document.querySelectorAll('#depth-mode button').forEach(function (b) {
+    b.onclick = function () {
+      var on = b.dataset.deep === '1' ? 1 : 0;
+      Object.keys(DEEP).forEach(function (k) { gState.tipi[k] = on; });
+      save('mre-graph', gState); buildPanel(); rebuildGlobal(true);
+    };
+  });
   document.querySelectorAll('#color-mode button').forEach(function (b) {
     b.onclick = function () { gState.mode = b.dataset.mode; save('mre-graph', gState); buildPanel(); global.draw(); };
   });
@@ -367,8 +391,58 @@
     div.className = 'note-body';
     div.innerHTML = marked.parse(src);
     div.querySelectorAll('a[href^="http"]').forEach(function (a) { a.target = '_blank'; a.rel = 'noopener'; });
+    div.querySelectorAll('.pdfview').forEach(function (pv) {
+      var src = pv.dataset.src;
+      pv.innerHTML = '<iframe title="Slide" src="' + src + '#page=1&view=FitH" loading="lazy"></iframe>';
+    });
+    var pv = div.querySelector('.pdfview');
+    div.querySelectorAll('a[href*=".pdf"]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (pv && href.split('#')[0] === pv.dataset.src && href.indexOf('#page=') > 0) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          setPdfPage(pv, +href.split('#page=')[1]);
+        });
+      } else { a.target = '_blank'; a.rel = 'noopener'; }
+    });
     div.querySelectorAll('.quiz-slot').forEach(function (slot) { slot.replaceWith(buildQuiz(quizzes[+slot.dataset.i])); });
     return div;
+  }
+  function setPdfPage(pv, p) {
+    var f = pv.querySelector('iframe');
+    var src = pv.dataset.src + '#page=' + p + '&view=FitH';
+    var nf = document.createElement('iframe'); nf.title = 'Slide'; nf.src = src;
+    f.replaceWith(nf);
+    pv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function deepBox(n) {
+    if (DEEP[n.k]) return null;
+    var groups = { sezione: [], slide: [], capitolo: [], libro: [] };
+    var esct = n.t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var re = new RegExp('\\[\\[' + esct + '(\\]\\]|\\\\?\\|)');
+    n.back.forEach(function (id) {
+      var b = BY[id]; if (!DEEP[b.k]) return;
+      var item = { n: b, extra: '', href: '#/n/' + b.id };
+      if (b.k === 'slide') {
+        var line = b.b.split('\n').filter(function (l) { return re.test(l); })[0] || '';
+        var m = line.match(/slide ([\d, -]+) \(/), pg = line.match(/#page=(\d+)/);
+        if (m) item.extra = 'slide ' + m[1].trim();
+        if (pg) item.href = '#/n/' + b.id + '?p=' + pg[1];
+      }
+      (groups[b.k] || groups.libro).push(item);
+    });
+    var lab = { sezione: 'Nel manuale', slide: 'Nelle slide', capitolo: 'Nei capitoli dei libri', libro: 'Nei libri' };
+    var html = '';
+    ['sezione', 'slide', 'capitolo', 'libro'].forEach(function (k) {
+      var g = groups[k]; if (!g.length) return;
+      g.sort(function (a, b) { return a.n.t.localeCompare(b.n.t, 'it', { numeric: true }); });
+      html += '<div class="deep-g"><div class="deep-h"><i class="dot" style="background:' + TYPES[k].color + '"></i>' + lab[k] + '</div><ul>' +
+        g.map(function (it) { return '<li><a href="' + it.href + '">' + esc(it.n.t.replace(/^Manuale § /, '§ ')) + '</a>' + (it.extra ? ' <span class="k">' + esc(it.extra) + '</span>' : '') + '</li>'; }).join('') + '</ul></div>';
+    });
+    if (!html) return null;
+    var box = document.createElement('section'); box.className = 'deep-box';
+    box.innerHTML = '<h2>Per approfondire</h2><p class="deep-sub">Dove leggere di più su questo argomento: paragrafi del manuale, slide delle lezioni, classici.</p>' + html;
+    return box;
   }
   function buildQuiz(q) {
     var nOk = q.o.filter(function (o) { return o.ok; }).length, multi = nOk > 1;
@@ -423,7 +497,7 @@
     return { prev: list[i - 1], next: list[i + 1] };
   }
   function unitNote(u) { return NOTES.filter(function (x) { return x.k === 'unita' && unitKey(x) === u; })[0]; }
-  function showNote(id) {
+  function showNote(id, startPage) {
     var n = BY[id];
     if (!n) { location.hash = '#/grafo'; return; }
     current = id;
@@ -439,6 +513,8 @@
     art.appendChild(crumbs);
     var h = document.createElement('h1'); h.textContent = n.t; art.appendChild(h);
     art.appendChild(renderMd(n.b));
+    var db = deepBox(n); if (db) art.appendChild(db);
+    if (startPage) { var pv0 = art.querySelector('.pdfview'); if (pv0) setTimeout(function () { setPdfPage(pv0, startPage); }, 50); }
     var foot = document.createElement('div'); foot.className = 'note-foot';
     var sb = document.createElement('button'); sb.className = 'btn' + (studied[id] ? ' on' : '');
     sb.textContent = studied[id] ? '✓ Studiata' : 'Segna come studiata';
@@ -486,7 +562,7 @@
     var tree = $('#tree'); tree.innerHTML = '';
     function group(key, label, color, items) {
       var g = document.createElement('div');
-      var hasCur = items.some(function (x) { return x && x.id === current; });
+      var hasCur = items.some(function (x) { return x && x.id === current; }) || (key === 'biblio' && current && BY[current] && DEEP[BY[current].k]);
       g.className = 'tree-group' + (openGroups[key] || hasCur ? ' open' : '');
       var b = document.createElement('button');
       b.innerHTML = '<i class="dot" style="background:' + color + '"></i><span>' + esc(label) + '</span><span class="chev">▶</span>';
@@ -510,6 +586,12 @@
       var con = NOTES.filter(function (x) { return x.k === 'concetto' && x.u.indexOf(u) >= 0; }).sort(byT);
       group('u' + u, u + '. ' + UNIT_NAMES[u], UNIT_COLORS[u], [un].concat(['Lezioni'], les, ['Concetti'], con));
     }
+    var bib = NOTES.filter(function (x) { return x.id === 'biblioteca-del-corso'; });
+    var man = NOTES.filter(function (x) { return x.k === 'libro' && /^Manuale/.test(x.t); });
+    var mch = NOTES.filter(function (x) { return x.k === 'capitolo' && /^Manuale · Capitolo/.test(x.t); }).sort(function (a, b) { return a.t.localeCompare(b.t, 'it', { numeric: true }); });
+    var sld = NOTES.filter(function (x) { return x.k === 'slide'; }).sort(function (a, b) { return a.t.localeCompare(b.t, 'it', { numeric: true }); });
+    var cls = NOTES.filter(function (x) { return x.k === 'libro' && !/^Manuale/.test(x.t); }).sort(byT);
+    group('biblio', 'Biblioteca', TYPES.libro.color, bib.concat(['Manuale'], man, mch, ['Slide delle lezioni'], sld, ['Classici'], cls));
     group('autori', 'Autori', TYPES.autore.color, NOTES.filter(function (x) { return x.k === 'autore'; }).sort(byT));
     group('risorse', 'Risorse', TYPES.risorsa.color, NOTES.filter(function (x) { return x.k === 'risorsa'; }).sort(byT));
     document.querySelectorAll('.top-actions .pill').forEach(function (p) { p.classList.remove('on'); });
@@ -519,8 +601,9 @@
     if (cur && cur.scrollIntoViewIfNeeded) cur.scrollIntoViewIfNeeded(); else if (cur) cur.scrollIntoView({ block: 'nearest' });
   }
   function renderProgress() {
-    var tot = NOTES.filter(function (n) { return n.k !== 'indice'; }).length;
-    var done = NOTES.filter(function (n) { return n.k !== 'indice' && studied[n.id]; }).length;
+    var base = function (n) { return n.k !== 'indice' && !DEEP[n.k]; };
+    var tot = NOTES.filter(base).length;
+    var done = NOTES.filter(function (n) { return base(n) && studied[n.id]; }).length;
     $('#progress').innerHTML = 'Note studiate: <strong>' + done + '</strong> su ' + tot +
       '<div class="bar"><span style="width:' + (100 * done / tot).toFixed(1) + '%"></span></div>' +
       '<div style="margin-top:6px;font-size:12px;color:var(--text-3)">Il progresso resta salvato solo in questo browser.</div>';
@@ -589,9 +672,9 @@
 
   /* ---------- routing ---------- */
   function route() {
-    var m = location.hash.match(/^#\/n\/([\w-]+)/);
+    var m = location.hash.match(/^#\/n\/([\w-]+)(?:\?p=(\d+))?/);
     setMenu(false);
-    if (m) showNote(m[1]); else showGraph();
+    if (m) showNote(m[1], m[2] ? +m[2] : 0); else showGraph();
   }
   window.addEventListener('hashchange', route);
   window.addEventListener('resize', function () { if (current) local.resize(); else global.resize(); });

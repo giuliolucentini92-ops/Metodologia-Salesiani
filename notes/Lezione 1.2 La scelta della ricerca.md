@@ -26,3 +26,5 @@ D: Quale tra questi è un condizionamento esterno della ricerca?
 - La scuola metodologica in cui si è formato
 S: Paradigma, schemi mentali e scuola di appartenenza sono condizionamenti interni; risorse, tempo, leggi e indirizzi politici sono esterni.
 ```
+
+Slide della lezione: [[Slide 1.2 La scelta della ricerca]]

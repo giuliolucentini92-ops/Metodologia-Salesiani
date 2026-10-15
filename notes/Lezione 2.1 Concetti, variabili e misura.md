@@ -20,3 +20,5 @@ unita: [2]
 - Le variabili traducono le teorie in ipotesi operative.
 - Il tipo di scala determina quali operazioni e quali statistiche sono lecite.
 - Ogni misura contiene errore; in alcuni casi possiamo stimarne la dimensione probabile.
+
+Slide della lezione: [[Slide 2.1 Concetti, variabili e misura]]

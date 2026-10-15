@@ -1,0 +1,15 @@
+# Protezione: questi file non vanno mai pubblicati
+*.avi
+*.wmv
+*.mp4
+*.pptx
+*.ppt
+*.docx
+*.doc
+/libri/
+/Filmati/
+/Manuale/
+/Metodologia salesiani/
+/Claude outputs/
+/sito-github/
+/_tmp_sito/

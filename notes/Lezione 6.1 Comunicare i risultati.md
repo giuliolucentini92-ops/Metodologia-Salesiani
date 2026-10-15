@@ -21,3 +21,5 @@ D: Qual è l'obiettivo principale di chi scrive un rapporto di ricerca?
 + Coinvolgere, interessare e dare spunti di riflessione al lettore, in modo comprensibile, chiaro ed essenziale
 S: Inserirsi nella letteratura è un obiettivo importante ma secondario: un rapporto che nessuno capisce non comunica nulla.
 ```
+
+Slide della lezione: [[Slide 6.1 Comunicare i risultati]]

@@ -19,3 +19,5 @@ D: Tre quesiti hanno indice di facilità 0,11, 0,96 e 0,52. Quale potrebbe esser
 + 0,52
 S: In genere si considerano poco efficaci i quesiti troppo difficili (sotto 0,25) o troppo facili (sopra 0,75), perché distinguono poco tra gli studenti.
 ```
+
+Slide della lezione: [[Slide 3.7 L'analisi degli item]]

@@ -24,3 +24,5 @@ D: Un'insegnante osserva il rendimento nel primo semestre per decidere come impo
 - Di verifica
 S: L'osservazione è finalizzata a una decisione sull'azione futura; non verifica un'ipotesi né si limita a descrivere.
 ```
+
+Slide della lezione: [[Slide 3.3 L'osservazione]]

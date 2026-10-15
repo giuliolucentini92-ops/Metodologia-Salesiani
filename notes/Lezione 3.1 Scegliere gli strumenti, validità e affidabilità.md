@@ -27,3 +27,5 @@ D: Abbina: "si riferisce al giudizio che i soggetti valutati danno dello strumen
 + Validità di aspetto
 S: La validità di aspetto (face validity) riguarda come la prova è percepita da chi la svolge.
 ```
+
+Slide della lezione: [[Slide 3.1 Scegliere gli strumenti, validità e affidabilità]]

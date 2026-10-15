@@ -22,3 +22,5 @@ unita: [2]
 - Una volta definito l'oggetto e delimitato il campo, si possono stabilire le fasi del processo di ricerca.
 
 Esercitazione collegata: [[Esercitazione · il problema di Monty Hall in SPSS]].
+
+Slide della lezione: [[Slide 2.2 Scienza, probabilità e fasi della ricerca]]

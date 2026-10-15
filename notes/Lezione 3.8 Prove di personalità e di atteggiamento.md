@@ -19,3 +19,5 @@ D: Quale di queste è la descrizione di un atteggiamento?
 - Il sig. Rossi ha un elevato quoziente intellettivo
 S: L'atteggiamento è un sistema stabile di valutazioni verso un oggetto sociale; aggressività e QI sono tratti o capacità.
 ```
+
+Slide della lezione: [[Slide 3.8 Prove di personalità e di atteggiamento]]

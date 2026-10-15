@@ -20,3 +20,5 @@ unita: [7]
 **Nota critica.** La lezione ha un registro argomentativo, non manualistico: presenta una posizione. Studiandola chiediti quali argomenti sono sostenuti da dati, quali da esempi e quali da analogie letterarie, e quali obiezioni potrebbe muovere chi difende la valutazione standardizzata.
 
 Approfondimento: [[Lettura · Borges, Del rigore della scienza]].
+
+Slide della lezione: [[Slide 7.1 Sulla valutazione]]

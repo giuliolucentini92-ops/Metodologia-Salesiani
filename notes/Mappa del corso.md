@@ -22,3 +22,4 @@ Il filo conduttore del corso sono le [[Fasi della ricerca]]: si parte da una [[S
 - Se è la prima volta, leggi [[Come usare questa mappa]].
 - Tre concetti che ritornano ovunque: [[Validità]], [[Affidabilità]], [[Operazionalizzazione]].
 - Materiali audiovisivi e letture: [[Risorse del corso]].
+- Manuale integrale, slide delle lezioni e classici: [[Biblioteca del corso]].

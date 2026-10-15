@@ -19,3 +19,5 @@ D: Nel codebook la domanda sul titolo di studio è codificata 1 = nessuno, 2 = l
 - 99
 S: Il valore si legge nella colonna delle etichette delle modalità di risposta.
 ```
+
+Slide della lezione: [[Slide 5.1 Il codebook]]

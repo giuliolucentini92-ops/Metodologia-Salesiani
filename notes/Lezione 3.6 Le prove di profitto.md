@@ -22,3 +22,5 @@ D: Quali sono vantaggi delle prove oggettive?
 + Le risposte sono registrate senza giudizi soggettivi
 S: Le prove oggettive limitano la libertà di espressione e richiedono molto tempo per essere costruite bene; il loro vantaggio è la standardizzazione.
 ```
+
+Slide della lezione: [[Slide 3.6 Le prove di profitto]]

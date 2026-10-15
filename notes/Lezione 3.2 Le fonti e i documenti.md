@@ -16,3 +16,5 @@ unita: [3]
 
 - Non si può parlare di ricerca se i dati di un documento vengono riportati così come sono.
 - I materiali non sono mai neutrali: sono il prodotto di fonti osservate e di un soggetto che osserva.
+
+Slide della lezione: [[Slide 3.2 Le fonti e i documenti]]

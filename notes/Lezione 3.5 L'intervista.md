@@ -19,3 +19,5 @@ unita: [3]
 - L'intervista è uno scambio verbale asimmetrico tra due o più persone.
 - Meno è strutturata, più è centrata sull'intervistato e si avvicina al colloquio.
 - L'intervento indiretto ("domandare senza domandare") è generalmente preferibile.
+
+Slide della lezione: [[Slide 3.5 L'intervista]]

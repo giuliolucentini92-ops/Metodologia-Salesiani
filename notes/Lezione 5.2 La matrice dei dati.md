@@ -18,3 +18,5 @@ D: Nella matrice, il caso 10 ha valore 2 nella variabile Tit_Stud. Con il codebo
 - Laurea
 S: Senza codebook il numero 2 non significa nulla; con il codebook si legge "licenza elementare".
 ```
+
+Slide della lezione: [[Slide 5.2 La matrice dei dati]]

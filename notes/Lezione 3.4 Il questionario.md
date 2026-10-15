@@ -16,3 +16,5 @@ unita: [3]
 ## In sintesi
 
 Per costruire un questionario valido e attendibile occorre: curare la formulazione delle domande, renderlo il più breve possibile, curare la presentazione grafica, fornire istruzioni precise, precodificare le risposte quando possibile, scegliere con attenzione l'ordine delle domande.
+
+Slide della lezione: [[Slide 3.4 Il questionario]]

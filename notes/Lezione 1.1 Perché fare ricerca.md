@@ -31,3 +31,5 @@ S: La scientificità non coincide con l'infallibilità: riguarda la possibilità
 ```
 
 Approfondimenti: [[Lettura · Dewey, L'unità della scienza come problema sociale]], [[Lettura · Shaw, Man and Superman]], [[Scienza e responsabilità sociale]].
+
+Slide della lezione: [[Slide 1.1 Perché fare ricerca]]

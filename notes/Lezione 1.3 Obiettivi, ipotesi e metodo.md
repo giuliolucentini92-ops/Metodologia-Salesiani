@@ -25,3 +25,5 @@ D: Quale riformulazione di "i geni sono infelici" rispetta i criteri dell'operaz
 - Molte persone ritenute geniali provano sentimenti di infelicità
 S: Solo la prima collega i concetti a operazioni osservabili e ripetibili da chiunque (la somministrazione di test definiti). La terza resta vaga: chi stabilisce chi è "ritenuto geniale"?
 ```
+
+Slide della lezione: [[Slide 1.3 Obiettivi, ipotesi e metodo]]

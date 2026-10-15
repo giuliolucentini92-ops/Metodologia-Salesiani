@@ -18,3 +18,5 @@ unita: [2]
 - La popolazione si definisce per criteri, non per dimensione.
 - Un campione probabilistico è tale se ogni caso ha una probabilità **nota** di essere incluso.
 - La dimensione necessaria dipende soprattutto dalla variabilità del carattere e dalla precisione richiesta.
+
+Slide della lezione: [[Slide 2.4 Popolazione e campione]]

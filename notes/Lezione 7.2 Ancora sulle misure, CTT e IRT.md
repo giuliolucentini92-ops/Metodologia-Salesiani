@@ -22,3 +22,5 @@ D: Dario risponde correttamente a due item facili, Fabio a due item difficili. E
 - Che gli item sono mal costruiti
 S: La CTT somma le risposte corrette senza pesarle per la difficoltà; l'IRT colloca abilità e difficoltà sulla stessa scala.
 ```
+
+Slide della lezione: [[Slide 7.2 Ancora sulle misure, CTT e IRT]]

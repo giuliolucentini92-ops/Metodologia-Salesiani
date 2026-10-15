@@ -28,3 +28,5 @@ D: Data la serie 1, 4, 5, 7, 10: campo di variazione e deviazione standard (arro
 - 9 e 5,4
 S: Campo = 10 − 1 = 9. Media 5,4; somma dei quadrati degli scarti 45,2; 45,2 / 5 = 9,04; radice ≈ 3.
 ```
+
+Slide della lezione: [[Slide 5.4 Analisi monovariata]]

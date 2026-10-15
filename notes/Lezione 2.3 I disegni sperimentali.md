@@ -27,3 +27,5 @@ D: Metti in ordine le fasi di progettazione: (a) misurare X prima, (b) introdurr
 - d, c, f, e, b, a, g
 S: Prima l'ipotesi, poi la sua traduzione operativa, l'isolamento delle variabili, la definizione dei gruppi; solo allora pretest, trattamento e post-test.
 ```
+
+Slide della lezione: [[Slide 2.3 I disegni sperimentali]]

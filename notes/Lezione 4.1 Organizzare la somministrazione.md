@@ -16,3 +16,5 @@ unita: [4]
 ## In sintesi
 
 La standardizzazione delle condizioni è parte della misura: due classi che svolgono la stessa prova con istruzioni diverse, o con tempi diversi, producono dati non confrontabili.
+
+Slide della lezione: [[Slide 4.1 Organizzare la somministrazione]]
