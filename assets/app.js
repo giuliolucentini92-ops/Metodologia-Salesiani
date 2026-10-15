@@ -251,7 +251,7 @@
       ctx.save();
       // respiro: lieve dilatazione ancorata alle spalle
       var by = (PORTRAIT.h - PORTRAIT.cy) * S;
-      ctx.translate(0, by); ctx.scale(1 + 0.004 * br, 1 + 0.006 * br); ctx.translate(0, -by);
+      ctx.translate(0, by); ctx.scale(1 + 0.008 * br, 1 + 0.012 * br); ctx.translate(0, -by);
       ctx.globalAlpha = op;
       ctx.drawImage(PORTRAIT.img, -PORTRAIT.cx * S, -PORTRAIT.cy * S, PORTRAIT.w * S, PORTRAIT.h * S);
       if (A && A.blink > 0 && PORTRAIT.eyeImg.complete && PORTRAIT.eyeImg.naturalWidth) {
@@ -310,8 +310,8 @@
         ctx.globalAlpha = 0.55 * fade; ctx.strokeStyle = col; ctx.lineWidth = 2.2 / t.k; ctx.lineCap = 'round';
         ctx.beginPath(); ctx.moveTo(xt, yt); ctx.lineTo(x, y); ctx.stroke();
         ctx.globalAlpha = 0.22 * fade; ctx.fillStyle = col;
-        ctx.beginPath(); ctx.arc(x, y, 7 / t.k, 0, 2 * Math.PI); ctx.fill();
-        ctx.globalAlpha = fade; ctx.beginPath(); ctx.arc(x, y, 3 / t.k, 0, 2 * Math.PI); ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, 9 / t.k, 0, 2 * Math.PI); ctx.fill();
+        ctx.globalAlpha = fade; ctx.beginPath(); ctx.arc(x, y, 3.6 / t.k, 0, 2 * Math.PI); ctx.fill();
       });
       ctx.globalAlpha = 1;
     }
@@ -368,9 +368,10 @@
 
   /* ---------- animazione: respiro, battito di ciglia, sinapsi ---------- */
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (gState.anim === undefined) gState.anim = reduceMotion ? 0 : 1;
   global.anim = { on: false, pulses: [], flash: {}, breath: 0, blink: 0, now: 0, nextBlink: 0, nextSpawn: 0, last: 0 };
   function animActive() {
-    if (reduceMotion || document.hidden || $('#view-graph').hidden || !global.portrait || !global.links.length) return false;
+    if (!gState.anim || document.hidden || $('#view-graph').hidden || !global.portrait || !global.links.length) return false;
     return global.t.k / (global.fitK || global.t.k) < 1.8; // fermo quando si zooma da vicino
   }
   function startPulse(a, now) {
@@ -396,9 +397,9 @@
       if (bt >= 230) { A.blink = 0; A.nextBlink = now + (Math.random() < 0.15 ? 250 : 3500 + Math.random() * 3500); }
     }
     // impulsi: nuovi ogni 150-350 ms, al massimo 14 insieme
-    if (now >= A.nextSpawn && A.pulses.length < 16) {
+    if (now >= A.nextSpawn && A.pulses.length < 22) {
       startPulse(global.nodes[Math.floor(Math.random() * global.nodes.length)], now);
-      A.nextSpawn = now + 150 + Math.random() * 200;
+      A.nextSpawn = now + 90 + Math.random() * 160;
     }
     var arrived = [];
     A.pulses = A.pulses.filter(function (p) {
@@ -406,7 +407,7 @@
       A.flash[p.b.id] = now; arrived.push(p.b);
       return false;
     });
-    arrived.forEach(function (n) { if (Math.random() < 0.45 && A.pulses.length < 16) startPulse(n, now); }); // propagazione
+    arrived.forEach(function (n) { if (Math.random() < 0.6 && A.pulses.length < 22) startPulse(n, now); }); // propagazione
     global.draw();
   }
   requestAnimationFrame(animLoop);
@@ -461,6 +462,8 @@
     $('#opt-studied').checked = !!gState.studied;
     $('#opt-portrait').checked = gState.portrait !== 0;
     $('#opt-portrait').disabled = deepOn;
+    $('#opt-anim').checked = !!gState.anim;
+    $('#opt-anim').disabled = deepOn || gState.portrait === 0;
   }
   document.querySelectorAll('#depth-mode button').forEach(function (b) {
     b.onclick = function () {
@@ -475,6 +478,7 @@
   $('#opt-labels').onchange = function (e) { gState.labels = e.target.checked ? 1 : 0; save('mre-graph', gState); global.draw(); };
   $('#opt-portrait').onchange = function (e) { gState.portrait = e.target.checked ? 1 : 0; save('mre-graph', gState); rebuildGlobal(true); };
   PORTRAIT.img.onload = function () { global.draw(); };
+  $('#opt-anim').onchange = function (e) { gState.anim = e.target.checked ? 1 : 0; save('mre-graph', gState); global.draw(); };
   $('#opt-studied').onchange = function (e) { gState.studied = e.target.checked ? 1 : 0; save('mre-graph', gState); global.draw(); };
   $('#gp-toggle').onclick = function () {
     var p = $('#graph-panel'); var c = p.classList.toggle('collapsed');
