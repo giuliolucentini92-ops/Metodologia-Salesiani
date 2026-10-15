@@ -55,6 +55,32 @@
   }
 
   /* ---------- motore del grafo (canvas + d3-force) ---------- */
+  /* ---------- ritratto: il grafo come cervello ---------- */
+  var PORTRAIT = {"src": "assets/ritratto.webp", "w": 1100, "h": 956, "cx": 535.5, "cy": 160.0, "area": 97036, "poly": [[240.5, 159.4], [279.7, 158.5], [310.4, 176.2], [390.6, 203.2], [425.1, 236.8], [490.3, 268.5], [569.6, 283.4], [631.1, 286.2], [668.4, 320.7], [731.8, 313.2], [770.9, 295.5], [775.6, 267.5], [743.9, 196.7], [739.2, 159.4], [683.3, 87.6], [641.4, 47.5], [560.3, 25.2], [509.0, 28.0], [466.1, 22.4], [414.8, 31.7], [330.9, 60.6], [254.5, 115.6], [250.8, 140.8]]};
+  PORTRAIT.img = new Image();
+  PORTRAIT.img.src = PORTRAIT.src;
+  function inPoly(x, y, P) {
+    var c = false;
+    for (var i = 0, j = P.length - 1; i < P.length; j = i++) {
+      var xi = P[i][0], yi = P[i][1], xj = P[j][0], yj = P[j][1];
+      if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) c = !c;
+    }
+    return c;
+  }
+  // riporta dentro il poligono un punto esterno, lungo il raggio verso l'origine
+  function clampToPoly(n, P) {
+    if (inPoly(n.x, n.y, P)) return;
+    var best = 1;
+    for (var i = 0, j = P.length - 1; i < P.length; j = i++) {
+      var ax = P[j][0], ay = P[j][1], bx = P[i][0], by = P[i][1];
+      var ex = bx - ax, ey = by - ay, den = n.x * ey - n.y * ex;
+      if (Math.abs(den) < 1e-9) continue;
+      var f = (ax * ey - ay * ex) / den, u = (ax * n.y - ay * n.x) / den;
+      if (f > 0 && f < best && u >= 0 && u <= 1) best = f;
+    }
+    n.x *= best * 0.96; n.y *= best * 0.96; n.vx = 0; n.vy = 0;
+  }
+
   function GraphView(canvas, opt) {
     this.c = canvas; this.ctx = canvas.getContext('2d'); this.opt = opt;
     this.t = d3.zoomIdentity; this.nodes = []; this.links = []; this.hover = null; this.pos = {};
@@ -128,11 +154,18 @@
   GraphView.prototype.fit = function (pad) {
     if (!this.nodes.length || !this.w) return;
     var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    if (this.portrait) {
+      var S = this.pS;
+      // inquadra testa e viso, lasciando fuori gran parte del busto
+      x0 = (0.08 * PORTRAIT.w - PORTRAIT.cx) * S; y0 = (0.02 * PORTRAIT.h - PORTRAIT.cy) * S;
+      x1 = (0.86 * PORTRAIT.w - PORTRAIT.cx) * S; y1 = (0.66 * PORTRAIT.h - PORTRAIT.cy) * S;
+    } else
     this.nodes.forEach(function (n) { x0 = Math.min(x0, n.x); x1 = Math.max(x1, n.x); y0 = Math.min(y0, n.y); y1 = Math.max(y1, n.y); });
     pad = pad || 40;
     var pr = this.opt.padRight ? this.opt.padRight() : 0;
     var k = Math.min((this.w - pr - pad * 2) / Math.max(1, x1 - x0), (this.h - pad * 2) / Math.max(1, y1 - y0));
-    k = Math.max(0.2, Math.min(k, this.opt.maxFit || 1.6));
+    k = Math.max(0.15, Math.min(k, this.opt.maxFit || 1.6));
+    this.fitK = k;
     var t = d3.zoomIdentity.translate((this.w - pr) / 2, this.h / 2).scale(k).translate(-(x0 + x1) / 2, -(y0 + y1) / 2);
     d3.select(this.c).transition().duration(500).call(this.zoom.transform, t);
   };
@@ -160,14 +193,24 @@
     });
     if (this.sim) this.sim.stop();
     var o = this.opt;
+    this.portrait = !!(o.portrait && o.portrait());
+    if (this.portrait) {
+      var sum = 0; this.nodes.forEach(function (n) { sum += Math.PI * (n.r + 5) * (n.r + 5); });
+      var S = Math.sqrt(Math.max(sum, 20000) * 2.0 / PORTRAIT.area);
+      this.pS = S;
+      this.pPoly = PORTRAIT.poly.map(function (q) { return [(q[0] - PORTRAIT.cx) * S, (q[1] - PORTRAIT.cy) * S]; });
+      var PP = this.pPoly;
+      this.nodes.forEach(function (n) { if (!n.fx) clampToPoly(n, PP); });
+    }
     this.sim = d3.forceSimulation(this.nodes)
       .force('link', d3.forceLink(this.links).id(function (d) { return d.id; }).distance(o.dist || 46).strength(o.linkStrength || 0.35))
-      .force('charge', d3.forceManyBody().strength(o.charge || -90).distanceMax(o.distMax || 420))
+      .force('charge', d3.forceManyBody().strength(this.portrait ? -125 : (o.charge || -90)).distanceMax(o.distMax || 420))
       .force('collide', d3.forceCollide(function (d) { return d.r + 3; }))
-      .force('x', d3.forceX(0).strength(o.gravity || 0.045))
-      .force('y', d3.forceY(0).strength(o.gravity || 0.045))
+      .force('x', d3.forceX(0).strength(this.portrait ? 0.008 : (o.gravity || 0.045)))
+      .force('y', d3.forceY(0).strength(this.portrait ? 0.008 : (o.gravity || 0.045)))
       .alphaDecay(0.03)
       .on('tick', function () {
+        if (self.portrait) self.nodes.forEach(function (n) { if (n.fx == null) clampToPoly(n, self.pPoly); });
         if (self.fitPending && self.sim.alpha() < 0.12) { self.fitPending = false; self.fit(self.opt.fitPad || 30); }
         self.draw();
       })
@@ -196,6 +239,16 @@
     var focus = this.hover || (o.highlight && this.nodeBy && this.nodeBy[o.highlight]) || null;
     var nb = focus ? (this.adj[focus.id] || {}) : null;
     var match = o.match || null;
+    if (this.portrait && PORTRAIT.img.complete && PORTRAIT.img.naturalWidth) {
+      // nitido da lontano, quasi trasparente da vicino
+      var r = t.k / (this.fitK || t.k);
+      var op = r <= 1.05 ? 0.9 : r >= 2.3 ? 0.06 : 0.9 - (r - 1.05) / 1.25 * 0.84;
+      if (focus) op *= 0.45;
+      var S = this.pS;
+      ctx.globalAlpha = op;
+      ctx.drawImage(PORTRAIT.img, -PORTRAIT.cx * S, -PORTRAIT.cy * S, PORTRAIT.w * S, PORTRAIT.h * S);
+      ctx.globalAlpha = 1;
+    }
     // archi
     ctx.lineWidth = Math.max(0.6, 1 / t.k);
     ctx.strokeStyle = edge; ctx.beginPath();
@@ -235,7 +288,7 @@
       if (focus) { show = n === focus || nb[n.id]; if (!show) return; }
       else if (match) { show = match[n.id]; if (!show) return; }
       else if (all || o.alwaysLabels || n.pinned) show = true;
-      else if (n.r >= (o.bigR || 10)) show = true;
+      else if (n.r >= (self.portrait && self.w < 700 && t.k < 1.3 * (self.fitK || 1) ? 99 : (o.bigR || 10))) show = true;
       else { show = zoomFade > 0; alpha = zoomFade; }
       if (!show) return;
       var full = n === focus || (focus && nb[n.id]) || t.k >= 1.6;
@@ -261,6 +314,7 @@
     dist: 42, charge: -95, gravity: 0.05, maxFit: 1.1,
     padRight: function () { var p = $('#graph-panel'); return (window.innerWidth > 860 && !p.classList.contains('collapsed')) ? p.offsetWidth + 20 : 0; },
     colorMode: function () { return gState.mode; },
+    portrait: function () { return gState.portrait !== 0 && !Object.keys(DEEP).some(function (k) { return gState.tipi[k]; }); },
     allLabels: function () { return gState.labels; },
     showStudied: function () { return gState.studied; },
     onClick: function (n) { location.hash = '#/n/' + n.id; },
@@ -322,6 +376,8 @@
   document.querySelectorAll('#color-mode button').forEach(function (b) { b.classList.toggle('on', b.dataset.mode === gState.mode); });
     $('#opt-labels').checked = !!gState.labels;
     $('#opt-studied').checked = !!gState.studied;
+    $('#opt-portrait').checked = gState.portrait !== 0;
+    $('#opt-portrait').disabled = deepOn;
   }
   document.querySelectorAll('#depth-mode button').forEach(function (b) {
     b.onclick = function () {
@@ -334,6 +390,8 @@
     b.onclick = function () { gState.mode = b.dataset.mode; save('mre-graph', gState); buildPanel(); global.draw(); };
   });
   $('#opt-labels').onchange = function (e) { gState.labels = e.target.checked ? 1 : 0; save('mre-graph', gState); global.draw(); };
+  $('#opt-portrait').onchange = function (e) { gState.portrait = e.target.checked ? 1 : 0; save('mre-graph', gState); rebuildGlobal(true); };
+  PORTRAIT.img.onload = function () { global.draw(); };
   $('#opt-studied').onchange = function (e) { gState.studied = e.target.checked ? 1 : 0; save('mre-graph', gState); global.draw(); };
   $('#gp-toggle').onclick = function () {
     var p = $('#graph-panel'); var c = p.classList.toggle('collapsed');
