@@ -776,7 +776,8 @@
     var cls = NOTES.filter(function (x) { return x.k === 'libro' && !/^Manuale/.test(x.t); }).sort(byT);
     var art = NOTES.filter(function (x) { return x.k === 'articolo'; }).sort(byT);
     group('biblio', 'Biblioteca', TYPES.libro.color, bib.concat(['Manuale'], man, mch, ['Articoli'], art, ['Slide delle lezioni'], sld, ['Classici'], cls));
-    group('autori', 'Autori', TYPES.autore.color, NOTES.filter(function (x) { return x.k === 'autore'; }).sort(byT));
+    var bySurname = function (a, b) { var sa = a.t.split(' ').pop(), sb = b.t.split(' ').pop(); return sa.localeCompare(sb, 'it'); };
+    group('autori', 'Autori', TYPES.autore.color, NOTES.filter(function (x) { return x.k === 'autore'; }).sort(bySurname));
     group('risorse', 'Risorse', TYPES.risorsa.color, NOTES.filter(function (x) { return x.k === 'risorsa'; }).sort(byT));
     document.querySelectorAll('.top-actions .pill').forEach(function (p) { p.classList.remove('on'); });
     if (!current) $('#nav-graph').classList.add('on');
