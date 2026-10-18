@@ -7,6 +7,8 @@ Questa è la mappa concettuale del corso di **Metodologia della ricerca educativ
 
 Il filo conduttore del corso sono le [[Fasi della ricerca]]: si parte da una [[Situazione problematica]], si formulano [[Ipotesi]], si progetta un disegno, si scelgono gli strumenti, si raccolgono e analizzano i dati, si comunicano i risultati. Le unità seguono questo percorso.
 
+<div class="essbox"><strong>Che cosa studiare per la triennale.</strong> L'essenziale sono i primi tre capitoli del manuale: <a href="#/n/manuale-capitolo-1-fare-ricerca-in-campo-educativo">1. Fare ricerca in campo educativo</a>, <a href="#/n/manuale-capitolo-2-scelta-del-problema-e-definizione-delle-ipotesi">2. Scelta del problema e definizione delle ipotesi</a>, <a href="#/n/manuale-capitolo-3-tecniche-e-strumenti-di-rilevazione">3. Tecniche e strumenti di rilevazione</a>. Tutto il resto è importante: i capitoli 4-6, gli articoli e i classici servono a capire meglio e a consolidare.</div>
+
 ## Le unità
 
 1. [[Unità 1. Fare ricerca in campo educativo]]
@@ -22,4 +24,4 @@ Il filo conduttore del corso sono le [[Fasi della ricerca]]: si parte da una [[S
 - Se è la prima volta, leggi [[Come usare questa mappa]].
 - Tre concetti che ritornano ovunque: [[Validità]], [[Affidabilità]], [[Operazionalizzazione]].
 - Materiali audiovisivi e letture: [[Risorse del corso]].
-- Manuale integrale, slide delle lezioni e classici: [[Biblioteca del corso]].
+- Sintesi del manuale, articoli, slide delle lezioni e classici: [[Biblioteca del corso]].

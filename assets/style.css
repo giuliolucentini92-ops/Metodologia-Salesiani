@@ -241,3 +241,9 @@ sup.fnref { font-size: 11px; color: var(--accent); font-weight: 600; }
 .local-card.expanded #local-canvas { height: 100%; }
 .local-scrim { z-index: 55; }
 body.local-open .note-side { z-index: 70; }
+
+/* indicazioni di studio */
+.essbox, .impbox { border-radius: 10px; padding: 10px 14px; margin: 0 0 16px; font-size: 14.5px; line-height: 1.5; }
+.essbox { background: color-mix(in srgb, #3fb99a 14%, transparent); border: 1px solid color-mix(in srgb, #3fb99a 45%, transparent); }
+.impbox { background: var(--bg-2); border: 1px solid var(--line); color: var(--text-2); }
+.essbox a, .impbox a { color: var(--accent, #7d86f2); }

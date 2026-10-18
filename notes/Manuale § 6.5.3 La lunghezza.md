@@ -3,15 +3,15 @@ tipo: sezione
 unita: [6]
 ---
 
-<div class="srcbox">Testo integrale dal manuale · [[Manuale · Capitolo 6. La comunicazione dei risultati]]</div>
+<div class="impbox"><strong>Approfondimento importante.</strong> Non rientra nel nucleo essenziale della triennale (capitoli 1-3), ma completa e consolida la preparazione.</div>
+
+<div class="srcbox">Sintesi del paragrafo · [[Manuale · Capitolo 6. La comunicazione dei risultati]] · il testo completo si studia sul volume</div>
 
 **Concetti trattati**: [[Rapporto di ricerca]]
 
----
+## Sintesi
 
-La lunghezza del rapporto è uno dei criteri da stabilire quando si decide di presentare un lavoro di ricerca. La lunghezza varia in relazione al tipo di pubblicazione a cui è destinato il nostro scritto. Essa, come si è detto, varia se si tratta di un articolo di rivista o di un saggio ospitato in un libro o se invece si tratta di un intero libro.
-
-Generalmente se si vuole pubblicare un articolo su un periodico il riferimento alla lunghezza viene dato dalla rivista stessa. Se si pubblica un articolo su una rivista è quindi sempre bene consultare la rivista a cui esso è indirizzato per controllare le norme redazionali in merito alle indicazioni da seguire per la stesura. Lo stesso suggerimento vale per la pubblicazione del rapporto in un libro. In questo caso sarà la casa editrice a fornire le norme da seguire per la stesura del testo: dal numero di battute per pagina ai riferimenti bibliografici.
+Il paragrafo osserva che la **lunghezza** del rapporto dipende dal tipo di pubblicazione: articolo di rivista, saggio in un volume o libro intero. Per gli articoli è la rivista stessa a stabilire i limiti, quindi conviene consultarne le **norme redazionali** prima di scrivere. Lo stesso vale per i libri, dove è la casa editrice a fornire le indicazioni, dal numero di battute per pagina ai criteri per i riferimenti bibliografici.
 
 ---
 

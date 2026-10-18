@@ -3,17 +3,15 @@ tipo: sezione
 unita: [4, 5]
 ---
 
-<div class="srcbox">Testo integrale dal manuale · [[Manuale · Capitolo 4. La raccolta dei dati]]</div>
+<div class="impbox"><strong>Approfondimento importante.</strong> Non rientra nel nucleo essenziale della triennale (capitoli 1-3), ma completa e consolida la preparazione.</div>
+
+<div class="srcbox">Sintesi del paragrafo · [[Manuale · Capitolo 4. La raccolta dei dati]] · il testo completo si studia sul volume</div>
 
 **Concetti trattati**: [[Controlli di plausibilità e congruenza]], [[Somministrazione]]
 
----
+## Sintesi
 
-Il controllo dell’affidabilità di una somministrazione può anche essere effettuato ricorrendo a figure esterne, tecnicamente definite “osservatori di qualità”. Tali figure hanno il compito di controllare se i rilevatori rispettano i criteri stabiliti per lo svolgimento della somministrazione degli strumenti. La figura degli osservatori di qualità è prevista soprattutto nelle ricerche su ampi campioni, in cui è necessaria la presenza di più somministratori.
-
-L’osservatore esterno svolge, in queste situazioni, un ruolo importante perché, oltre a verificare il rispetto delle procedure stabilite, registra tutti quei comportamenti che possono in qualche modo invalidare i dati raccolti.
-
-Un altro modo per controllare la qualità della rilevazione può essere, nel caso in cui si ricorra a più rilevatori, quello di far loro riempire un questionario sull’andamento della rilevazione. La lettura di questi dati consente di poter confermare o meno l’affidabilità della somministrazione 17 .
+Il paragrafo indica due modi per verificare l'affidabilità di una somministrazione. Nelle ricerche su ampi campioni, con molti rilevatori, si può ricorrere a figure esterne, gli **osservatori di qualità**, che controllano il rispetto delle procedure e registrano i comportamenti capaci di invalidare i dati. In alternativa si può chiedere ai rilevatori di compilare un questionario sull'andamento della rilevazione, la cui lettura conferma o meno l'affidabilità del lavoro svolto.
 
 ---
 

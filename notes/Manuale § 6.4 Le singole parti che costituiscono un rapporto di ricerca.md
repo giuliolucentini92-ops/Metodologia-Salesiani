@@ -3,15 +3,15 @@ tipo: sezione
 unita: [6]
 ---
 
-<div class="srcbox">Testo integrale dal manuale · [[Manuale · Capitolo 6. La comunicazione dei risultati]]</div>
+<div class="impbox"><strong>Approfondimento importante.</strong> Non rientra nel nucleo essenziale della triennale (capitoli 1-3), ma completa e consolida la preparazione.</div>
+
+<div class="srcbox">Sintesi del paragrafo · [[Manuale · Capitolo 6. La comunicazione dei risultati]] · il testo completo si studia sul volume</div>
 
 **Concetti trattati**: [[Struttura del rapporto di ricerca]], [[Rapporto di ricerca]]
 
----
+## Sintesi
 
-conclusione che un testo è leggibile se chi scrive usa parole tratte prevalentemente dal vocabolario comune e, in particolare, dalle fasce più interne di esso, cioè parole di base, molto brevi e note alla maggior parte dei parlanti, se organizza in modo semplice e lineare, le frasi, in modo da non superare le 20-25 parole \[….\]. La leggibilità, vista in questo senso, è una caratteristica intrinseca, del testo che spiana la via alla sua comprensibilità.» (PIEMONTESE, 1996, pp.109).
-
-Generalmente un rapporto di ricerca è strutturato in diverse parti relative a ciò che precede il testo (titolo, abstract, ringraziamenti) e ai materiali di supporto al testo (note, citazioni, glossario, bibliografia, appendici, indici, illustrazioni e tavole, grafici, tabelle e figure). La presenza o l’assenza di alcune di queste sezioni dipende ovviamente dal tipo di pubblicazione e di divulgazione che si intende dare al proprio rapporto. Se si tratta, infatti, di scrivere un articolo da pubblicare su una rivista, molto probabilmente si eviterà di inserire il glossario e non vi sarà ogni genere di indice.
+Il paragrafo introduce le parti che compongono un **rapporto di ricerca**. Oltre al testo vero e proprio, si distinguono gli elementi che lo precedono (titolo, abstract, ringraziamenti) e i **materiali di supporto** (note, citazioni, glossario, bibliografia, appendici, indici, illustrazioni, tavole, grafici, tabelle e figure). Quali di queste sezioni includere dipende dal tipo di pubblicazione: in un articolo di rivista, per esempio, di solito mancano glossario e indici. In apertura compare la chiusura di una citazione di Piemontese, secondo cui un testo è leggibile se usa parole comuni e frasi lineari di non più di 20-25 parole.
 
 ---
 

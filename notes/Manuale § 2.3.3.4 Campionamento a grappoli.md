@@ -3,23 +3,15 @@ tipo: sezione
 unita: [2]
 ---
 
-<div class="srcbox">Testo integrale dal manuale · [[Manuale · Capitolo 2. Scelta del problema e definizione delle ipotesi]]</div>
+<div class="essbox"><strong>Essenziale per la triennale.</strong> I capitoli 1, 2 e 3 del manuale sono la base da studiare per l'esame.</div>
+
+<div class="srcbox">Sintesi del paragrafo · [[Manuale · Capitolo 2. Scelta del problema e definizione delle ipotesi]] · il testo completo si studia sul volume</div>
 
 **Concetti trattati**: [[Campione a grappoli]]
 
----
+## Sintesi
 
-Il campione a grappoli è un campione casuale semplice in cui l’unità di campionamento non è un individuo o un caso singolo, ma un aggregato o un grappolo di elementi.
-
-Le ricerche educative fanno spesso riferimento a campioni a grappoli quando, invece che campionare singoli studenti, campionano intere classi.
-
-Il ricorso a campioni a grappolo si rende necessario quando il ricercatore non è in grado di ottenere la lista completa degli individui che compongono la sua popolazione.
-
-Questo approccio consente anche un grande risparmio di tempo e di risorse.
-
-Tale tecnica comporta però un margine di errore più ampio del campionamento casuale semplice, poiché l’errore può annidarsi in ciascuno degli stadi in cui si opera.
-
-L’esempio che ci ha accompagnato durante questa parte del nostro discorso rende evidente che la distinzione tra gli approcci a campionamento non è esclusiva e che possono dunque essere utilizzati elementi dei diversi approcci.
+Il **campione a grappoli** è un campione casuale semplice in cui l'unità estratta non è il singolo individuo ma un aggregato di elementi, come accade spesso nella ricerca educativa quando si campionano classi intere anziché studenti. Vi si ricorre quando non si dispone della lista completa degli individui, e permette di risparmiare molto tempo e risorse. Il prezzo è un errore più ampio rispetto al campionamento casuale semplice, perché l'errore può insinuarsi in ogni stadio della procedura. L'esempio IEA mostra inoltre che i diversi tipi di campionamento non si escludono e possono essere combinati.
 
 ---
 

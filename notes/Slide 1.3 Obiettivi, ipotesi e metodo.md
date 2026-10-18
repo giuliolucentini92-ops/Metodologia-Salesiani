@@ -40,7 +40,7 @@ Slide della [[Lezione 1.3 Obiettivi, ipotesi e metodo]] · 22 slide · [apri il 
 | [12](risorse/slide/1-3.pdf#page=12) | Le ricerche basate su correlazioni |
 | [13](risorse/slide/1-3.pdf#page=13) | Le ricerche sperimentali |
 | [14](risorse/slide/1-3.pdf#page=14) | Riepilogando quanto visto finora… |
-| [15](risorse/slide/1-3.pdf#page=15) | Percy Williams Bridgman (1882–1961) è stato un fisico e filosofo della scienza |
+| [15](risorse/slide/1-3.pdf#page=15) | Percy Williams Bridgman (1882-1961) è stato un fisico e filosofo della scienza |
 | [16](risorse/slide/1-3.pdf#page=16) | L’approccio storico alla ricerca educativa studia l’educazione come |
 | [17](risorse/slide/1-3.pdf#page=17) | L’approccio teorico alla ricerca educativa si fonda sulla costruzione e |
 | [18](risorse/slide/1-3.pdf#page=18) | L’approccio clinico alla ricerca educativa nasce dal riconoscimento della |

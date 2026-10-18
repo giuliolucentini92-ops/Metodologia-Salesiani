@@ -56,8 +56,8 @@ Slide della [[Lezione 1.1 Perché fare ricerca]] · 33 slide · [apri il PDF in 
 | [26](risorse/slide/1-1.pdf#page=26) | Immanuel Kant (1724-1804) |
 | [27](risorse/slide/1-1.pdf#page=27) | Max Weber (1864-1920) |
 | [28](risorse/slide/1-1.pdf#page=28) | John Dewey (1859-1952) |
-| [29](risorse/slide/1-1.pdf#page=29) | Émile Durkheim (1858–1917) |
-| [30](risorse/slide/1-1.pdf#page=30) | Francesco De Bartolomeis (1918–2020) è stato un |
-| [31](risorse/slide/1-1.pdf#page=31) | Aldo Visalberghi (1919–2007) |
+| [29](risorse/slide/1-1.pdf#page=29) | Émile Durkheim (1858-1917) |
+| [30](risorse/slide/1-1.pdf#page=30) | Francesco De Bartolomeis (1918-2020) è stato un |
+| [31](risorse/slide/1-1.pdf#page=31) | Aldo Visalberghi (1919-2007) |
 | [32](risorse/slide/1-1.pdf#page=32) | Parla il Diavolo: |
-| [33](risorse/slide/1-1.pdf#page=33) | Gaston Mialaret (1918–2016) |
+| [33](risorse/slide/1-1.pdf#page=33) | Gaston Mialaret (1918-2016) |

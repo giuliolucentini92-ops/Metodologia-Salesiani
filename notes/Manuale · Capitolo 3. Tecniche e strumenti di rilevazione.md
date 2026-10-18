@@ -3,7 +3,9 @@ tipo: capitolo
 unita: [3]
 ---
 
-Capitolo 3 del [[Manuale · Metodologia della ricerca in educazione e formazione]].
+<div class="essbox"><strong>Essenziale per la triennale.</strong> I capitoli 1, 2 e 3 del manuale sono la base da studiare per l'esame.</div>
+
+Capitolo 3 del [[Manuale · Metodologia della ricerca in educazione e formazione]]. Ogni paragrafo ha una sintesi e i collegamenti ai concetti del grafo.
 
 ## Paragrafi
 

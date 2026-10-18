@@ -3,7 +3,9 @@ tipo: capitolo
 unita: [5]
 ---
 
-Capitolo 5 del [[Manuale · Metodologia della ricerca in educazione e formazione]].
+<div class="impbox"><strong>Approfondimento importante.</strong> Non rientra nel nucleo essenziale della triennale (capitoli 1-3), ma completa e consolida la preparazione.</div>
+
+Capitolo 5 del [[Manuale · Metodologia della ricerca in educazione e formazione]]. Ogni paragrafo ha una sintesi e i collegamenti ai concetti del grafo.
 
 ## Paragrafi
 
@@ -20,6 +22,6 @@ Capitolo 5 del [[Manuale · Metodologia della ricerca in educazione e formazione
 
 ← [[Manuale · Capitolo 4. La raccolta dei dati]] · [[Manuale · Capitolo 6. La comunicazione dei risultati]] →
 
-## Apertura del capitolo
+## Apertura del capitolo, in sintesi
 
-In questo capitolo ci proponiamo di presentare quelle che sono le azioni fondamentali da seguire per impostare e leggere i dati di una ricerca. In particolare ci proponiamo di suggerire tutta una serie di operazioni essenziali che un ricercatore in campo educativo deve conoscere e sapere applicare, a prescindere dalla possibilità di collaborare con esperti di altri settori disciplinari. L’obiettivo è dunque quello di fornire una insieme di indicazioni metodologiche necessarie a chi fa ricerca e deve sapere lavorare con i dati e sui dati che non si può demandare ad altre figure professionali.
+Il capitolo introduce le operazioni di base necessarie per impostare e leggere i dati di una ricerca. Gli autori sostengono che il ricercatore in campo educativo deve conoscerle e saperle applicare in prima persona, anche quando collabora con esperti di altre discipline, perché lavorare con i dati è una competenza che non si può delegare.

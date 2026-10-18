@@ -2,10 +2,11 @@
 
 Sito statico che presenta i contenuti del corso triennale di Metodologia della ricerca educativa come una rete di note collegate, sul modello della vista a grafo di Obsidian.
 
-- **464 note** su due livelli.
+- **470 note** su due livelli.
   - Livello dei concetti: 7 unità, 25 lezioni, 212 concetti, 19 autori, 17 risorse, 4 indici.
-  - Livello di approfondimento: il manuale integrale (6 capitoli, 97 paragrafi), 25 mazzi di slide delle lezioni, 6 testi classici con i loro capitoli.
-- Ogni concetto ha un riquadro **Per approfondire** che rimanda ai paragrafi del manuale e alle slide (con il numero di slide) in cui è trattato.
+  - Livello di approfondimento: sintesi del manuale (6 capitoli, 97 paragrafi), 5 articoli con testo integrale e domande, 25 mazzi di slide delle lezioni, 6 testi classici con i loro capitoli.
+- **Indicazione di studio**: per la triennale l'essenziale sono i primi tre capitoli del manuale; tutto il resto è importante. Le note lo segnalano con un riquadro.
+- Ogni concetto ha un riquadro **Per approfondire** che rimanda alle sintesi dei paragrafi del manuale, agli articoli e alle slide (con il numero di slide) in cui è trattato.
 - Nel grafo, il selettore **Livello** mostra solo i concetti oppure anche gli approfondimenti.
 - **Grafo globale** filtrabile per unità e tipo di nota; **grafo locale** e **collegamenti in entrata** per ogni nota.
 - **Domande di autoverifica** dentro le note, con soluzione.
@@ -24,7 +25,7 @@ notes/              le note in Markdown (fonte dei contenuti)
 risorse/            file scaricabili (circa 74 MB)
   slide/            PDF delle slide, un file per lezione (1-1.pdf ... 7-2.pdf)
   libri/            classici di pubblico dominio (Dewey 1910 e 1916, Shaw)
-  manuale/          figure del manuale
+  articoli/         PDF degli articoli del docente
 build.py            rigenera assets/data.js a partire da notes/
 .nojekyll           dice a GitHub Pages di pubblicare i file così come sono
 ```
@@ -84,7 +85,8 @@ Lo script aggiorna `assets/data.js` e segnala i collegamenti `[[...]]` che non c
 ## Livello di approfondimento: avvertenze
 
 - **Slide**: i PDF sono stati convertiti automaticamente dai file PowerPoint e alcuni caratteri sono sostituiti, con testi che a volte escono dai riquadri. Per una resa fedele esporta le slide in PDF da PowerPoint (*File, Esporta, PDF*) e sostituisci i file in `risorse/slide/` mantenendo gli stessi nomi: i collegamenti continuano a funzionare.
-- **Manuale**: il testo è pubblicato integralmente per concessione dell'autore. La conversione dei capitoli 4-6 ha richiesto la ricomposizione delle righe e può contenere piccoli difetti; mancano nel file sorgente i paragrafi 3.5.7 e 4.3.
+- **Manuale**: il testo integrale non è pubblicato. Ogni capitolo e paragrafo ha una sintesi collegata ai concetti; mancano le schede dei paragrafi 3.5.7 e 4.3.
+- **Articoli**: pubblicati con il consenso dell'autore. Il saggio di Corda Costa (1982) ha solo sintesi, struttura e prove formative: il PDF non è nel repository perché i diritti non sono del docente. *I numeri di don Milani* è una bozza di stampa resa ricercabile con OCR: la sede editoriale va completata.
 - **Lettera a una professoressa** (Scuola di Barbiana, 1967): opera protetta. Il sito ne offre solo una mappa ragionata; il PDF non va mai caricato nel repository.
 - **Novum Organum** (Bacone, 1620): la scheda è presente, ma il file disponibile è una traduzione portoghese e va sostituito con un'edizione di pubblico dominio (latino o inglese).
 - I PDF di Dewey e Shaw sono scansioni: la ricerca nel testo dipende dalla qualità dell'OCR.

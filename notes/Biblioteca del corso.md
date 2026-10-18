@@ -3,11 +3,25 @@ tipo: indice
 unita: [0]
 ---
 
-Il livello di **approfondimento** della mappa: dai concetti si scende alle letture specifiche. Ogni concetto ha in fondo alla pagina un riquadro *Per approfondire* con i paragrafi del manuale, le slide e i capitoli dei classici che ne parlano.
+Il livello di **approfondimento** della mappa: dai concetti si scende alle letture specifiche. Ogni concetto ha in fondo alla pagina un riquadro *Per approfondire* con le sintesi dei paragrafi del manuale, gli articoli, le slide e i capitoli dei classici che ne parlano.
+
+<div class="essbox"><strong>Che cosa è essenziale.</strong> Per il corso triennale l'essenziale sono i primi tre capitoli del manuale. Tutto il resto (capitoli 4-6, articoli, classici) è importante: serve a capire meglio e a consolidare.</div>
 
 ## Il manuale
 
-- [[Manuale · Metodologia della ricerca in educazione e formazione]], testo integrale diviso in 6 capitoli e 97 paragrafi.
+- [[Manuale · Metodologia della ricerca in educazione e formazione]]: sintesi dei 6 capitoli e di 97 paragrafi, collegate ai concetti. Il testo si studia sul volume.
+  - Essenziali: [[Manuale · Capitolo 1. Fare ricerca in campo educativo]], [[Manuale · Capitolo 2. Scelta del problema e definizione delle ipotesi]], [[Manuale · Capitolo 3. Tecniche e strumenti di rilevazione]]
+  - Importanti: [[Manuale · Capitolo 4. La raccolta dei dati]], [[Manuale · Capitolo 5. La codifica e la preparazione dei dati]], [[Manuale · Capitolo 6. La comunicazione dei risultati]]
+
+## Gli articoli
+
+Saggi del docente e testi di riferimento, ciascuno con sintesi, struttura collegata ai concetti e domande di autoverifica.
+
+- [[Articolo · Corda Costa 1982, Il modello deweyano di ricerca]]
+- [[Articolo · Lucisano 2018, L'uomo è misura di tutte le cose]]
+- [[Articolo · Lucisano, I numeri di don Milani]]
+- [[Articolo · Lucisano e De Luca 2014, Quale quantità e quale qualità]]
+- [[Articolo · De Luca e Lucisano 2011, Item analisi tra modello e realtà]]
 
 ## Le slide delle lezioni
 

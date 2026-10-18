@@ -31,6 +31,6 @@ Materiali di approfondimento collegati alle note. Nessun file di terzi è ospita
 - [[Esercitazione · correlazione con il foglio di calcolo]]
 - [[Esercitazione · il problema di Monty Hall in SPSS]]
 
-## Testi integrali e slide
+## Manuale, articoli e slide
 
-Il manuale, le slide delle lezioni e i classici sono raccolti nella [[Biblioteca del corso]].
+Le sintesi del manuale, gli articoli, le slide delle lezioni e i classici sono raccolti nella [[Biblioteca del corso]]. Per la triennale l'essenziale sono i primi tre capitoli del manuale; tutto il resto è importante.

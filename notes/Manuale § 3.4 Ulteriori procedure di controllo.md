@@ -3,19 +3,15 @@ tipo: sezione
 unita: [3]
 ---
 
-<div class="srcbox">Testo integrale dal manuale · [[Manuale · Capitolo 3. Tecniche e strumenti di rilevazione]]</div>
+<div class="essbox"><strong>Essenziale per la triennale.</strong> I capitoli 1, 2 e 3 del manuale sono la base da studiare per l'esame.</div>
+
+<div class="srcbox">Sintesi del paragrafo · [[Manuale · Capitolo 3. Tecniche e strumenti di rilevazione]] · il testo completo si studia sul volume</div>
 
 **Concetti trattati**: [[Oggettività]], [[Formulazione delle domande]]
 
----
+## Sintesi
 
-La validità e l’affidabilità degli strumenti di rilevazione sono strettamente connesse al controllo di altri elementi che possono interferire sulla loro precisione (BONCORI, 1993). È bene che gli stimoli che costituiscono uno strumento di misura siano:
-
-1.  *chiari* e *precisi*. Se, ad esempio, una domanda di un questionario è formulata in modo da suscitare dubbi o fraintendimenti nell’interpretazione è ovvio che essa non potrà essere né valida né affidabile;
-
-2.  *leggibili* dal punto di vista formale/grafico. Non deve presentarsi alcun ostacolo formale che possa influire sulla qualità delle risposte raccolte;
-
-3.  *verbalmente ridotti.* Le istruzioni, le domande, le risposte (laddove previste) non devono essere troppo lunghe tanto da distrarre o da inserire altri tipi di difficoltà rispetto al compito richiesto.
+Validità e affidabilità dipendono anche da altri elementi che possono comprometterne la precisione, come indica Boncori. Gli stimoli di uno strumento devono anzitutto essere **chiari e precisi**, perché una domanda che genera dubbi o fraintendimenti non può essere né valida né affidabile. Devono poi essere **leggibili** sul piano grafico e formale, senza ostacoli che alterino la qualità delle risposte. Infine devono essere **verbalmente ridotti**: istruzioni, domande e risposte troppo lunghe distraggono e aggiungono difficoltà estranee al compito richiesto.
 
 ---
 

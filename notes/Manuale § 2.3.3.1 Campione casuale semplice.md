@@ -3,19 +3,15 @@ tipo: sezione
 unita: [2]
 ---
 
-<div class="srcbox">Testo integrale dal manuale · [[Manuale · Capitolo 2. Scelta del problema e definizione delle ipotesi]]</div>
+<div class="essbox"><strong>Essenziale per la triennale.</strong> I capitoli 1, 2 e 3 del manuale sono la base da studiare per l'esame.</div>
+
+<div class="srcbox">Sintesi del paragrafo · [[Manuale · Capitolo 2. Scelta del problema e definizione delle ipotesi]] · il testo completo si studia sul volume</div>
 
 **Concetti trattati**: [[Campione casuale semplice]]
 
----
+## Sintesi
 
-Definiamo campionamento casuale semplice il campionamento casuale senza reimmissione.
-
-Nel campione casuale semplice ogni unità di analisi compresa nella definizione della popolazione deve avere la stessa probabilità di essere inclusa nel campione e questo deve verificarsi anche quando le caratteristiche delle singole unità di analisi siano fortemente differenziate. Se la nostra definizione di popolazione comprende gli studenti iscritti al primo anno del corso di laurea in Scienze dell'educazione Luigi, che ha 18 anni e che ha appena sostenuto l'esame di maturità, e Laura, che ha 45 anni e ha già due lauree, debbono avere la stessa probabilità di entrare a far parte del campione.
-
-La correttezza del campione casuale dipende, dunque, soprattutto dalla correttezza della lista di campionamento.
-
-Definita l'ampiezza del campione e attribuito un numero agli elementi della lista la procedura consiste solo nella estrazione casuale delle unità di analisi. Nel capitolo 5 vedremo come sia possibile nel caso del campionamento casuale semplice calcolare l’errore di campionamento e di conseguenza le dimensioni ottimali di un campione.
+Il **campione casuale semplice** è definito come campionamento casuale senza reimmissione, in cui ogni unità della popolazione ha la stessa probabilità di essere estratta, per quanto diverse siano le sue caratteristiche. L'esempio è quello di due iscritti al primo anno di Scienze dell'educazione: un diciottenne appena diplomato e una donna di 45 anni con due lauree devono avere le stesse probabilità di entrare nel campione. Per questo la bontà del campione dipende soprattutto dalla correttezza della lista. Stabilita l'ampiezza e numerati gli elementi della lista, basta estrarre a caso le unità. Il calcolo dell'errore di campionamento e dell'ampiezza ottimale è rinviato al capitolo 5.
 
 ---
 

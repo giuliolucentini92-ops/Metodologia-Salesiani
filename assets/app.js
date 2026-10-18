@@ -28,9 +28,10 @@
     libro: { label: 'Libri', one: 'Libro', color: '#b8743a', deep: 1 },
     capitolo: { label: 'Capitoli', one: 'Capitolo', color: '#c99a5b', deep: 1 },
     sezione: { label: 'Paragrafi del manuale', one: 'Paragrafo del manuale', color: '#8c96a6', deep: 1 },
-    slide: { label: 'Slide', one: 'Slide', color: '#36a7b8', deep: 1 }
+    slide: { label: 'Slide', one: 'Slide', color: '#36a7b8', deep: 1 },
+    articolo: { label: 'Articoli', one: 'Articolo', color: '#c4605a', deep: 1 }
   };
-  var DEEP = { libro: 1, capitolo: 1, sezione: 1, slide: 1 };
+  var DEEP = { libro: 1, capitolo: 1, sezione: 1, slide: 1, articolo: 1 };
 
   /* ---------- memoria locale (facoltativa) ---------- */
   function load(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
@@ -599,7 +600,7 @@
   }
   function deepBox(n) {
     if (DEEP[n.k]) return null;
-    var groups = { sezione: [], slide: [], capitolo: [], libro: [] };
+    var groups = { sezione: [], articolo: [], slide: [], capitolo: [], libro: [] };
     var esct = n.t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     var re = new RegExp('\\[\\[' + esct + '(\\]\\]|\\\\?\\|)');
     n.back.forEach(function (id) {
@@ -613,9 +614,9 @@
       }
       (groups[b.k] || groups.libro).push(item);
     });
-    var lab = { sezione: 'Nel manuale', slide: 'Nelle slide', capitolo: 'Nei capitoli dei libri', libro: 'Nei libri' };
+    var lab = { sezione: 'Nel manuale (sintesi dei paragrafi)', articolo: 'Negli articoli', slide: 'Nelle slide', capitolo: 'Nei capitoli dei libri', libro: 'Nei libri' };
     var html = '';
-    ['sezione', 'slide', 'capitolo', 'libro'].forEach(function (k) {
+    ['sezione', 'articolo', 'slide', 'capitolo', 'libro'].forEach(function (k) {
       var g = groups[k]; if (!g.length) return;
       g.sort(function (a, b) { return a.n.t.localeCompare(b.n.t, 'it', { numeric: true }); });
       html += '<div class="deep-g"><div class="deep-h"><i class="dot" style="background:' + TYPES[k].color + '"></i>' + lab[k] + '</div><ul>' +
@@ -623,7 +624,7 @@
     });
     if (!html) return null;
     var box = document.createElement('section'); box.className = 'deep-box';
-    box.innerHTML = '<h2>Per approfondire</h2><p class="deep-sub">Dove leggere di più su questo argomento: paragrafi del manuale, slide delle lezioni, classici.</p>' + html;
+    box.innerHTML = '<h2>Per approfondire</h2><p class="deep-sub">Dove leggere di più su questo argomento: sintesi dei paragrafi del manuale, articoli, slide delle lezioni, classici.</p>' + html;
     return box;
   }
   function buildQuiz(q) {
@@ -773,7 +774,8 @@
     var mch = NOTES.filter(function (x) { return x.k === 'capitolo' && /^Manuale · Capitolo/.test(x.t); }).sort(function (a, b) { return a.t.localeCompare(b.t, 'it', { numeric: true }); });
     var sld = NOTES.filter(function (x) { return x.k === 'slide'; }).sort(function (a, b) { return a.t.localeCompare(b.t, 'it', { numeric: true }); });
     var cls = NOTES.filter(function (x) { return x.k === 'libro' && !/^Manuale/.test(x.t); }).sort(byT);
-    group('biblio', 'Biblioteca', TYPES.libro.color, bib.concat(['Manuale'], man, mch, ['Slide delle lezioni'], sld, ['Classici'], cls));
+    var art = NOTES.filter(function (x) { return x.k === 'articolo'; }).sort(byT);
+    group('biblio', 'Biblioteca', TYPES.libro.color, bib.concat(['Manuale'], man, mch, ['Articoli'], art, ['Slide delle lezioni'], sld, ['Classici'], cls));
     group('autori', 'Autori', TYPES.autore.color, NOTES.filter(function (x) { return x.k === 'autore'; }).sort(byT));
     group('risorse', 'Risorse', TYPES.risorsa.color, NOTES.filter(function (x) { return x.k === 'risorsa'; }).sort(byT));
     document.querySelectorAll('.top-actions .pill').forEach(function (p) { p.classList.remove('on'); });

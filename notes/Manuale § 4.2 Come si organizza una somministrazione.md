@@ -3,13 +3,15 @@ tipo: sezione
 unita: [4]
 ---
 
-<div class="srcbox">Testo integrale dal manuale · [[Manuale · Capitolo 4. La raccolta dei dati]]</div>
+<div class="impbox"><strong>Approfondimento importante.</strong> Non rientra nel nucleo essenziale della triennale (capitoli 1-3), ma completa e consolida la preparazione.</div>
+
+<div class="srcbox">Sintesi del paragrafo · [[Manuale · Capitolo 4. La raccolta dei dati]] · il testo completo si studia sul volume</div>
 
 **Concetti trattati**: [[Somministrazione]]
 
----
+## Sintesi
 
-La fase di somministrazione prevede una prima fase, di organizzazione e di predisposizione della rilevazione, e una seconda fase, successiva alla prova propriamente detta. La definizione delle procedure da seguire consente il controllo dei fattori che possono inquinare la scelta dei dati.
+Il paragrafo introduce l'organizzazione della somministrazione, articolata in una fase di preparazione della rilevazione e in una fase successiva alla prova. Stabilire in anticipo le procedure permette di tenere sotto controllo i fattori che potrebbero falsare i dati.
 
 ---
 

@@ -17,6 +17,11 @@ La mappa funziona come un *second brain*: ogni nota contiene poche idee e rimand
 
 - Ogni nota mostra a lato il **grafo locale** (i vicini diretti) e i **collegamenti in entrata**, cioè le note che la citano. I collegamenti in entrata sono spesso il modo migliore per capire *a cosa serve* un concetto.
 - Le domande di **autoverifica** sono dentro le note: rispondi prima di guardare la soluzione.
+- In fondo alle note dei concetti, il riquadro **Per approfondire** indica dove leggere di più: sintesi dei paragrafi del manuale, articoli, slide, classici.
+
+## Che cosa è essenziale
+
+Per il corso triennale l'essenziale sono i **primi tre capitoli del manuale** (unità 1, 2 e 3 della mappa). Tutto il resto è importante: i capitoli 4, 5 e 6, gli articoli della [[Biblioteca del corso]] e i classici completano e consolidano la preparazione. Le note del manuale lo segnalano con un riquadro verde (essenziale) o grigio (approfondimento importante).
 
 ## Un consiglio di metodo
 
