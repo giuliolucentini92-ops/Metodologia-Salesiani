@@ -13,3 +13,6 @@
 /Claude outputs/
 /sito-github/
 /_tmp_sito/
+
+# eccezione: video pubblicati nel sito
+!risorse/video/*.mp4

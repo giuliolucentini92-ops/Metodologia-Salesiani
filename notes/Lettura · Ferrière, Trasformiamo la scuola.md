@@ -15,4 +15,6 @@ Prefazione di *Transformons l'école* (1947) di Adolphe Ferrière, pedagogista s
 
 Confronta con l'altro "diavolo" del corso: [[Lettura · Shaw, Man and Superman]].
 
+Il racconto si può anche ascoltare, letto per intero sulle immagini delle slide: [[Video · Ferrière, Trasformiamo la scuola]].
+
 Collegamenti: [[Educazione come oggetto di studio]], [[John Dewey]].

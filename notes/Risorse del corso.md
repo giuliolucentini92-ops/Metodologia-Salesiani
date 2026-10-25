@@ -11,6 +11,7 @@ Materiali di approfondimento collegati alle note. Nessun file di terzi è ospita
 - [[Video · John Dewey]]
 - [[Video · Jean Piaget]]
 - [[Video · Don Milani e la scuola di Barbiana]]
+- [[Video · Ferrière, Trasformiamo la scuola]]
 - [[Video · Kaspar Hauser]]
 - [[Video · Hiroshima]]
 - [[Canzone · Little Boxes]]
