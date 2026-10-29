@@ -3,9 +3,9 @@ tipo: risorsa
 unita: [1, 7]
 ---
 
-Lettura integrale, con immagini, dell'apologo del diavolo che "crea la scuola", dalla prefazione di *Trasformiamo la scuola* (1947) di Adolphe Ferrière. Durata: 8 minuti.
+Lettura integrale, con immagini, dell'apologo del diavolo che "crea la scuola", dalla prefazione di *Trasformiamo la scuola* (1947) di Adolphe Ferrière. Durata: circa 9 minuti.
 
-<video class="vid" controls preload="metadata" playsinline poster="risorse/video/ferriere-anteprima.jpg" src="risorse/video/ferriere-trasformiamo-la-scuola.mp4">Il tuo browser non riproduce il video: <a href="risorse/video/ferriere-trasformiamo-la-scuola.mp4">scaricalo qui</a>.</video>
+<video class="vid" controls preload="metadata" playsinline poster="risorse/video/ferriere-anteprima.jpg?v=2" src="risorse/video/ferriere-trasformiamo-la-scuola.mp4?v=2">Il tuo browser non riproduce il video: <a href="risorse/video/ferriere-trasformiamo-la-scuola.mp4">scaricalo qui</a>.</video>
 
 ## Guida all'ascolto
 
